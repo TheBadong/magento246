@@ -11,34 +11,60 @@ This work is largely based on the awesome tutorial I found here : https://medium
 ## Install Docker
 You will need docker and docker-compose to run the project.
 
-> `sudo apt-get update && sudo apt-get install docker-ce docker-ce-cli containerd.io docker-compose`
+`sudo apt-get update && sudo apt-get install docker-ce docker-ce-cli containerd.io docker-compose`
 
 ## Build the containers
 
-> `docker-compose up -d`
+`docker-compose up -d`
 
 ## Install the sources
 You will need your magento access keys. They can be found in your Magento marketplace account at https://marketplace.magento.com/customer/accessKeys/. You will need a free account to access these.
 
 Exec into the fpm container, install the sources
-> `docker-compose exec fpm bash`
+`docker-compose exec fpm bash`
 
-> `composer install`
+`composer install`
 
 and fill in the username (public key) and the password (secret key) when prompted.
 
+## Install Magento
+Run the install command
+
+```
+bin/magento setup:install \
+--base-url=http://local.magento246.com \
+--db-host=magento246_db_1 \
+--db-name=magento2 \
+--db-user=magento2 \
+--db-password=magento2 \
+--admin-firstname=admin \
+--admin-lastname=admin \
+--admin-email=admin@admin.com \
+--admin-user=admin \
+--admin-password=admin123 \
+--language=fr_FR \
+--currency=USD \
+--timezone=Europe/Paris \
+--use-rewrites=1 \
+--search-engine=elasticsearch7 \
+--elasticsearch-host=magento246_elasticsearch_1 \
+--elasticsearch-port=9200 \
+--elasticsearch-index-prefix=magento2_stg \
+--cleanup-database
+```
+
 ## Set correct filesystem permissions
-> `find var generated vendor pub/static pub/media app/etc -type f -exec chmod g+w {} +`
+`find var generated vendor pub/static pub/media app/etc -type f -exec chmod g+w {} +`
 
-> `find var generated vendor pub/static pub/media app/etc -type d -exec chmod g+ws {} +`
+`find var generated vendor pub/static pub/media app/etc -type d -exec chmod g+ws {} +`
 
-> `chown -R :www-data .`
+`chown -R :www-data .`
 
-> `chmod u+x bin/magento`
+`chmod u+x bin/magento`
 
 ## Add the website url to /etc/hosts
 Add 
-> `127.0.0.1 local.magento246.com`
+`127.0.0.1 local.magento246.com`
 
 to you /etc/hosts file (you will need admin access to edit this file)
 

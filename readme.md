@@ -21,6 +21,7 @@ You will need docker and docker-compose to run the project.
 You will need your magento access keys. They can be found in your Magento marketplace account at https://marketplace.magento.com/customer/accessKeys/. You will need a free account to access these.
 
 Exec into the fpm container, install the sources
+
 `docker-compose exec fpm bash`
 
 `composer install`
@@ -64,6 +65,7 @@ bin/magento setup:install \
 
 ## Add the website url to /etc/hosts
 Add 
+
 `127.0.0.1 local.magento246.com`
 
 to you /etc/hosts file (you will need admin access to edit this file)

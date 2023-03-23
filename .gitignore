@@ -48,3 +48,8 @@
 /var/package/*
 !/var/package/*.xml
 /vendor
+.editorconfig
+.htaccess
+.htaccess.sample
+.php-cs-fixer.dist.php
+.user.ini

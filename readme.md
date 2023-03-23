@@ -73,5 +73,17 @@ to you /etc/hosts file (you will need admin access to edit this file)
 ## And voilà!
 You should now be able to access your website at local.magento246.com
 
+# Post install steps
+
+## Set deploy mode to developer
+By default, magento installs in, well, default mode. If you want to actually write code for Magento, enable developer mode:
+
+`bin/magento deploy:mode:set developer`
+
+## Install dummy data
+If you'd like some example products and orders, install the dummy data provided by magento:
+
+`bin/magento sampledata:deploy`
+
 # Troubleshooting
 Feel free to open an issue if you encounter problems while installing this repository

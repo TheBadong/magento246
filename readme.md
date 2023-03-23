@@ -74,3 +74,4 @@ to you /etc/hosts file (you will need admin access to edit this file)
 You should now be able to access your website at local.magento246.com
 
 # Troubleshooting
+Feel free to open an issue if you encounter problems while installing this repository
